@@ -7,6 +7,7 @@ Además, crea imágenes y genera un reporte automatizado en word.
 
 ## Requisitos:
 - Instalar openssespy (pip install openseespy)
+- Para ejecutar adecuadamente el código, es necesario comentar en la función plot_modeshape de la librería openseespy, la línea que plotea *plt.show()*.
 - Instalar python-docx (pip install python-docx)
 - Adicionalmente, es necesario usar librerías como *matplolib*, *numpy* y *pandas*.
 
