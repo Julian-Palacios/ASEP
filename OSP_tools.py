@@ -71,27 +71,6 @@ def GeoModel(dx, dy, h, nx, ny, nz):
     Nodes[:(nx+1)*(ny+1),4]=0
     # print(Nodes)
 
-    #
-    # fig = plt.figure(figsize=(20, 10))
-    # ax = fig.add_subplot(111, projection='3d')
-    # from mpl_toolkits.mplot3d import Axes3D
-
-    # fig = plt.figure()
-    # ax1 = fig.add_subplot(111, projection='3d')
-
-    # n = 8
-    # xpos = Nodes[n*(nx+1)*(ny+1):(n+1)*(nx+1)*(ny+1),1]#[1,2,3,4,5,6,7,8,9,10]
-    # ypos = Nodes[n*(nx+1)*(ny+1):(n+1)*(nx+1)*(ny+1),2]#[2,3,4,5,1,6,2,1,7,2]
-    # num_elements = len(xpos)
-    # zpos = zeros(num_elements)
-    # dx = ones(num_elements)
-    # dy = ones(num_elements)
-    # dz =  Nodes[n*(nx+1)*(ny+1):(n+1)*(nx+1)*(ny+1),4]
-
-    # ax1.bar3d(xpos, ypos, zpos, dx, dy, dz, color='#00ceaa')
-    # plt.show()
-    #
-
     NE = (nx*(ny+1)+ny*(nx+1)+(nx+1)*(ny+1))*nz
     Elems = zeros((NE,4))
     # Creando las conexiones de los elementos verticales
@@ -264,7 +243,7 @@ def genReport(df1,df2,df3,df4,df5,texto1,texto2):
     from PIL import Image
     import glob
     #
-    lista = glob.glob('Mod*.png')
+    lista = glob.glob('./imagenes/Mod*.png')
     #
     for archivo in lista:
         im = Image.open(archivo)
@@ -288,7 +267,7 @@ def genReport(df1,df2,df3,df4,df5,texto1,texto2):
     p.add_run('ASEP.').italic = True
 
     document.add_paragraph('Edificio Analizado - vista 3D:')
-    document.add_picture('Modelo_3D.png', width=Inches(5.0))
+    document.add_picture('./imagenes/Modelo_3D.png', width=Inches(5.0))
     document.add_paragraph('Edificación de Categoría Tipo C.')
 
     document.add_heading('Generalidades', level=1)
@@ -300,7 +279,7 @@ def genReport(df1,df2,df3,df4,df5,texto1,texto2):
     document.add_paragraph('Carga de Acabados:\t\t100 kg/m2', style='List Bullet')
     document.add_paragraph('Carga de Tabiquería:\t\t150 kg/m2', style='List Bullet')
 
-    document.add_picture('Modelo_numerico.png', width=Inches(5.0))
+    document.add_picture('./imagenes/Modelo_numerico.png', width=Inches(5.0))
     f1 = document.add_paragraph('Figura 1: Modelo Numérico para el Análisis.')
     f1.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
@@ -317,15 +296,15 @@ def genReport(df1,df2,df3,df4,df5,texto1,texto2):
         for j in range(df1.shape[-1]):
             table1.cell(i+1,j).text = str(df1.values[i,j].round(4))
 
-    document.add_picture('Modo_1.png', width=Inches(5.0))
+    document.add_picture('./imagenes/Modo_1.png', width=Inches(5.0))
     f2 = document.add_paragraph('Figura 2: Primer modo de vibración.')
     f2.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-    document.add_picture('Modo_2.png', width=Inches(5.0))
+    document.add_picture('./imagenes/Modo_2.png', width=Inches(5.0))
     f3 = document.add_paragraph('Figura 3: Segundo modo de vibración.')
     f3.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-    document.add_picture('Modo_3.png', width=Inches(5.0))
+    document.add_picture('./imagenes/Modo_3.png', width=Inches(5.0))
     f4 = document.add_paragraph('Figura 4: Tercer modo de vibración.')
     f4.alignment = WD_ALIGN_PARAGRAPH.CENTER
     #
@@ -362,7 +341,7 @@ def genReport(df1,df2,df3,df4,df5,texto1,texto2):
     document.add_paragraph('F. de Amplificación del Suelo:\t\tS = 1.00', style='List Bullet')
     document.add_paragraph('Coef. de Reducción:\t\t\tRo= 8.00', style='List Bullet')
 
-    document.add_picture('Espectro_E030.png', width=Inches(5.4))
+    document.add_picture('./imagenes/Espectro_E030.png', width=Inches(5.4))
     f5 = document.add_paragraph('Figura 5: Espectro según la norma E030.')
     f5.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
@@ -392,7 +371,7 @@ def genReport(df1,df2,df3,df4,df5,texto1,texto2):
     document.add_page_break()
     document.add_heading('Resultados', level=1)
     document.add_paragraph('Distorsiones de Entrepiso', style='Intense Quote')
-    document.add_picture('distorsion_din.png', width=Inches(5.0))
+    document.add_picture('./imagenes/distorsion_din.png', width=Inches(5.0))
     f6 = document.add_paragraph('Figura 6: Distorsión de entrepiso del análisis dinámico.')
     f6.alignment = WD_ALIGN_PARAGRAPH.CENTER
 

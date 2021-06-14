@@ -71,7 +71,7 @@ for Ele in Elems:
 
 opsv.plot_model(fig_wi_he=(30., 25.),az_el=(-50,10),fig_lbrt = (0, 0, 1, 1))
 plt.axis([limx1,limx2,limy1,limy2])
-plt.savefig('./Modelo_numerico.png',dpi=200)
+plt.savefig('./imagenes/Modelo_numerico.png',dpi=200)
 
 # Aplicando Cargas vivas y muertas
 wLive = 250*kg/m**2
@@ -98,7 +98,7 @@ opsv.plot_extruded_shapes_3d(ele_shapes, fig_wi_he=(30.0, 25.0),
                         az_el=(-50,10),fig_lbrt = (0, 0, 1, 1))
 plt.axis([limx1,limx2,limy1,limy2])
 # plt.show()
-plt.savefig('./Modelo_3D.png',dpi=200)
+plt.savefig('./imagenes/Modelo_3D.png',dpi=200)
 
 # Obtenemos los modos
 Nmodes = 12
@@ -106,11 +106,11 @@ Tmodes = ops.eigen(Nmodes)
 
 # ploteamos el modo 1
 opsplt.plot_modeshape(1, 500)
-plt.savefig('./Modo_1.png',dpi=200) # comentar plt.show() de código fuente
+plt.savefig('./imagenes/Modo_1.png',dpi=200) # comentar plt.show() de código fuente
 opsplt.plot_modeshape(2, 500)
-plt.savefig('./Modo_2.png',dpi=200) 
+plt.savefig('./imagenes/Modo_2.png',dpi=200) 
 opsplt.plot_modeshape(3, 500)
-plt.savefig('./Modo_3.png',dpi=200)
+plt.savefig('./imagenes/Modo_3.png',dpi=200)
 
 Tmodes = ops.eigen(Nmodes)
 for i in range(Nmodes):
@@ -154,7 +154,7 @@ plt.plot(x,y,'k-')
 plt.xlabel('Periodo (s)')
 plt.ylabel('Sa (g)')
 plt.axis([0,3.0,0,1.1*y.max()])
-plt.savefig('Espectro_E030.png')
+plt.savefig('./imagenes/Espectro_E030.png')
 #
 H = np.arange(1,nz+1)*alt
 P = sum(MF[0::3,0::3]) # Masa por nivel
@@ -213,14 +213,6 @@ for i in range(nz):
     df3 = df3.append({'Nivel':i+1,'Vx(ton)':VS[i]/1000,'UxMax(cm)':desX*100,'UyMax(cm)':desY*100,
                     'DriftX(‰)':driftX,'DriftY(‰)':driftY}, ignore_index=True)
 print(df3.round(4))
-#
-# sfac = 100.0
-# fig_wi_he = 30., 20.
-# nep = 9
-# opsv.plot_defo(sfac, nep, fmt_interp='b-', az_el=(45., 20.),
-#                fig_wi_he=fig_wi_he, endDispFlag=0)
-# plt.title('3d 3-element cantilever beam')
-# plt.show()
 
 # Definición de caso de carga estático
 ops.remove('timeSeries',1)
@@ -295,13 +287,7 @@ for i in range(nz):
         'Uy(cm)':FSy*0.75*Ro*DDy[1::3][i]*100,'Δx(‰)':Δx*1000,'Δy(‰)':Δy*1000}, ignore_index=True)
 df5 = df5.astype({'Nivel':int})
 print(df5.round(4))
-# sfac = 100.0
-# fig_wi_he = 30., 20.
-# nep = 9
-# opsv.plot_defo(sfac, nep, fmt_interp='b-', az_el=(45., 20.),
-#                fig_wi_he=fig_wi_he, endDispFlag=0)
-# plt.title('3d 3-element cantilever beam')
-# plt.show()
+#
 vecX = np.array(df5.loc[:,'Δx(‰)'])
 vecY = np.array(df5.loc[:,'Δy(‰)'])
 lim = 1.1*max(vecX.max(),vecY.max())
@@ -313,6 +299,6 @@ plt.xlabel('Distorsión (‰)')
 plt.ylabel('Nivel')
 plt.axis([-0.05,lim,-0.05,nz+0.05])
 plt.yticks(np.arange(0, nz+0.05, 1))
-plt.savefig('distorsion_din.png')
+plt.savefig('./imagenes/distorsion_din.png')
 
 genReport(df1,df2.iloc[::-1],df3.iloc[::-1],df4.iloc[::-1],df5.iloc[::-1],texto1,texto2)
