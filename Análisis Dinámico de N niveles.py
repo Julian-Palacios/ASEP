@@ -1,6 +1,6 @@
 # Código realizado por JPI Ingeniería e Innovación SAC
 # Realizado para el Curso:
-# "Análisis Sísmico de Edificaciones en Python"
+# Análisis Sísmico de Edificaciones en Python
 
 import openseespy.opensees as ops
 import openseespy.postprocessing.ops_vis as opsv

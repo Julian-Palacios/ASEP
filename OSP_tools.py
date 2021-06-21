@@ -313,7 +313,7 @@ def genReport(df1,df2,df3,df4,df5,texto1,texto2):
     p1 = document.add_paragraph(texto1)
     p1.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     #
-    t2 = document.add_paragraph('\nTabla 2: Fuerzas y desplazamientos del análisis estático en X.')
+    t2 = document.add_paragraph('Tabla 2: Fuerzas y desplazamientos del análisis estático en X.')
     t2.alignment = WD_ALIGN_PARAGRAPH.CENTER
     table3 = document.add_table(rows=df3.shape[0]+1, cols=df3.shape[1])
     table3.style = 'Light Grid Accent 1'
