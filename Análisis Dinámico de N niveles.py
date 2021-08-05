@@ -17,7 +17,7 @@ ops.model('basic', '-ndm', 3, '-ndf', 6)
 # Generamos la malla
 RigidDiaphragm = 'ON'
 dx, dy, alt  = 4, 4, 3 # m
-nx, ny, nz = 3, 2, 3
+nx, ny, nz = 5, 4, 8
 if nx*dx>ny*dy:
     limx1 = 0
     limx2 = nx*dx
@@ -184,7 +184,7 @@ ops.pattern('Plain', 1, tsTag, '-fact', 1.0)
 # Aplicando fuerzas estáticas en X
 Le = ny*dy*0.05
 for i in range(nz):
-    ops.load(int(Diap[i][0]),F[i]*9.81,0.,0.,0.,0.,F[i]*9.81*Le)
+    ops.load(int(Diap[i][0]),F[i]*9.80665,0.,0.,0.,0.,F[i]*9.80665*Le)
 
 # Ejecución del análisis estático
 ops.wipeAnalysis()
@@ -224,7 +224,7 @@ ops.pattern('Plain', 1, tsTag, '-fact', 1.0)
 # Aplicando fuerzas estáticas en Y
 Le = nx*dx*0.05
 for i in range(nz):
-    ops.load(int(Diap[i][0]),0.,F[i]*9.81,0.,0.,0.,F[i]*9.81*Le)
+    ops.load(int(Diap[i][0]),0.,F[i]*9.80665,0.,0.,0.,F[i]*9.80665*Le)
 
 # Ejecución del análisis estático
 ops.wipeAnalysis()

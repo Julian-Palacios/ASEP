@@ -15,22 +15,22 @@ kgf = 9.8066*N
 MPa = 10**6*Pa
 psi = 6894.76*Pa
 # physical constants
-g = 9.81*m/s**2
+g = 9.80665*m/s**2
 
 # Propiedades de los materiales
 fc = 210 # kg/cm2
-E = 15100*fc**0.5*10**4*9.81*Pa
+E = 15100*fc**0.5*10**4*9.80665*Pa
 G = 0.5*E/(1+0.2)
 # Sección de Columna
-a = 50*cm
+a = 60*cm
 Ac = a**2
 ρlc = 2400*Ac*m**2
 Izc = a**4/12
 Iyc = a**4/12
 Jxxc = 2.25*(a/2)**4
 # Sección de Viga
-b = 50*cm
-h = 25*cm
+b = 60*cm
+h = 30*cm
 A = b*h
 ρl = 2400*A*m**2
 Iz = b*h**3/12
@@ -194,7 +194,7 @@ def getCombo(E030,MF,modo,NT,Tmodes):
         FPr=modo[j-1].T@MF@Rz
         #
         Sa = E030[j-1]
-        Sd = Sa*9.81/(2*np.pi/Tmodes[j-1])**2
+        Sd = Sa*9.80665/(2*np.pi/Tmodes[j-1])**2
         #
         respDX = Sd*FPx*modo[j-1]
         respAX = Sa*FPx*MF@modo[j-1]
