@@ -1,6 +1,6 @@
 #--------------------------------------------------------
 #   LibUnits.py - Define system of units OpenSees model
-#   Code:      II
+#   Code:      JP,II,EC
 #--------------------------------------------------------
 # base units (SI units)
 m = 1
